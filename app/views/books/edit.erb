@@ -1,1 +1,12 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit a book in your library!</h1>
+
+<form method="post" action="/books/<%= @book.id %>">
+    <div>
+        <input type="hidden" name="_method" value="patch">
+        <label for="title">Title:</label>
+        <input name="title" id="title" value="<%= @book.title %>"><br>
+        <label for="author">Author:</label>
+        <input name="author" id="author" value="<%= @book.author %>"><br>
+    </div>
+    <input type="submit" id="submit" value="Update Book">
+</form>

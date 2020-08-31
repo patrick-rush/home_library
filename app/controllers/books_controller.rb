@@ -35,12 +35,22 @@ class BooksController < ApplicationController
 
   # GET: /books/5/edit
   get "/books/:id/edit" do
-    erb :"/books/edit"
+    @book = Book.find(params[:id])
+    if logged_in?(session)
+      erb :"/books/edit"
+    else
+      redirect "/login"
+    end
   end
 
   # PATCH: /books/5
   patch "/books/:id" do
-    redirect "/books/:id"
+    book = Book.find(params[:id])
+    book.title = params[:title]
+    book.author = params[:author]
+    # binding.pry
+    book.save
+    redirect "/books/#{book.id}"
   end
 
   # DELETE: /books/5
