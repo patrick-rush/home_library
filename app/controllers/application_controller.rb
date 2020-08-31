@@ -14,4 +14,14 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  helpers do
+    def logged_in?(session)
+      !!session[:user_id]
+    end
+
+    def current_user(session)
+      User.find(session[:user_id])
+    end 
+  end
+
 end

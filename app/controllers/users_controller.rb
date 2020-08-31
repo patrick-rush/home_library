@@ -21,6 +21,25 @@ class UsersController < ApplicationController
     redirect "/users/new"
   end
 
+  get "/login" do
+    if logged_in?(session)
+      redirect "/books"
+    else
+      erb :'/users/login'
+    end
+  end
+
+  post "/login" do
+    user = User.find_by(email: params[:email])
+
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/books"
+    else
+      redirect "/login"
+    end
+  end
+
   # # GET: /users/5
   # get "/users/:id" do
   #   erb :"/users/show"
