@@ -2,6 +2,8 @@ class BooksController < ApplicationController
 
   # GET: /books
   get "/books" do
+    @user = current_user(session)
+    @books = # all books associated with current user
     erb :"/books/index"
   end
 
@@ -16,7 +18,13 @@ class BooksController < ApplicationController
 
   # POST: /books
   post "/books" do
-    redirect "/books"
+    book = Book.new(title: params[:title], author: params[:author])
+    
+    if book.save
+      redirect "/books/#{book.id}"
+    else
+      redirect "/books/new"
+    end
   end
 
   # GET: /books/5
