@@ -2,12 +2,12 @@ class BooksController < ApplicationController
 
   # GET: /books
   get "/books" do
-    erb :"/books/index.html"
+    erb :"/books/index"
   end
 
   # GET: /books/new
   get "/books/new" do
-    erb :"/books/new.html"
+    erb :"/books/new"
   end
 
   # POST: /books
@@ -17,12 +17,12 @@ class BooksController < ApplicationController
 
   # GET: /books/5
   get "/books/:id" do
-    erb :"/books/show.html"
+    erb :"/books/show"
   end
 
   # GET: /books/5/edit
   get "/books/:id/edit" do
-    erb :"/books/edit.html"
+    erb :"/books/edit"
   end
 
   # PATCH: /books/5
@@ -30,8 +30,8 @@ class BooksController < ApplicationController
     redirect "/books/:id"
   end
 
-  # DELETE: /books/5/delete
-  delete "/books/:id/delete" do
+  # DELETE: /books/5
+  delete "/books/:id" do
     redirect "/books"
   end
 end
