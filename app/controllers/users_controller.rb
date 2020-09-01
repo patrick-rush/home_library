@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
     # binding.pry
     if user.save
+      # come back and add @errors = user.errors.full_messages ??
       session[:user_id] = user.id
       redirect "/books"
     end
@@ -38,6 +39,11 @@ class UsersController < ApplicationController
     else
       redirect "/login"
     end
+  end
+
+  get "/logout" do
+    session.clear
+    redirect "/login"
   end
 
   # # GET: /users/5
