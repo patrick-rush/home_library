@@ -3,3 +3,11 @@
 <div>
 <p>Author: <%= @book.author %></p>
 </div>
+
+<form method="get" action="/books/<%= @book.id %>/edit"> 
+    <input type="submit" id="submit" value="Edit">
+</form>
+<form method="post" action="/books/<%= @book.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" id="submit" value="Delete">
+</form>
