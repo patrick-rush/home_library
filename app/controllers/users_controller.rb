@@ -37,6 +37,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/books"
     else
+      @error = "Incorrect email or password" # -> figure out where to use this
       redirect "/login"
     end
   end
