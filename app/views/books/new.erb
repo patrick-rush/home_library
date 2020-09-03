@@ -1,4 +1,4 @@
-<h1>Add a book to your library by filling out the form below:</h1>
+<h1>Add a book to your library</h1>
 
 <form method="post" action="/books">
     <div>
@@ -9,6 +9,17 @@
         <p>
             <label for="author">Author:</label><br>
             <input name="author" id="author">
+        </p>
+        <p>
+            <label for="status">Status:</label><br>
+            <input type="radio" name="status" value="Unread">
+            <label for="unread">Unread</label>
+            <input type="radio" name="status" value="Reading">
+            <label for="reading">Reading</label>
+            <input type="radio" name="status" value="Read">
+            <label for="read">Read</label>
+            <input type="radio" name="status" value="">
+            <label for="other">Other</label>
         </p>
     </div>
     <input type="submit" id="submit" value="Add Book">

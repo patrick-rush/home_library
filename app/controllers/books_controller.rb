@@ -18,8 +18,7 @@ class BooksController < ApplicationController
 
   # POST: /books
   post "/books" do
-    book = Book.new(title: params[:title], author: params[:author], user_id: current_user(session).id)
-    
+    book = Book.new(title: params[:title], author: params[:author], status: params[:status], user_id: current_user(session).id)
     if book.save
       redirect "/books/#{book.id}"
     else
@@ -46,8 +45,10 @@ class BooksController < ApplicationController
   # PATCH: /books/5
   patch "/books/:id" do
     book = Book.find(params[:id])
+    # binding.pry
     book.title = params[:title]
     book.author = params[:author]
+    book.status = params[:status]
     # binding.pry
     book.save
     redirect "/books/#{book.id}"
