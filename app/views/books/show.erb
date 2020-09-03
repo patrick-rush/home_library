@@ -7,6 +7,9 @@
     <% end %>
 </div>
 
+<form method="get" action="/books/<%= @book.id %>/notes/new">
+    <input type="submit" id="submit" value="Add Note">
+</form>
 <form method="get" action="/books/<%= @book.id %>/edit"> 
     <input type="submit" id="submit" value="Edit">
 </form>
@@ -14,3 +17,11 @@
     <input type="hidden" name="_method" value="delete">
     <input type="submit" id="submit" value="Delete">
 </form>
+
+<div>
+    <p>Notes:</p>
+    <% @book.notes.each do |note| %>
+        <div>Note From: <%= note.created_at("%b %d, %Y") %> </div>
+        <p><%= note.content %></p>
+    <% end %>
+</div>

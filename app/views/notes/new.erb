@@ -1,0 +1,12 @@
+<h1>Insert the form to create a new instance of your model.</h1>
+
+<form method="post" action="/notes">
+    <input type="hidden" name="id" value="<%= @book.id %>">
+    <div>
+        <p>
+            <label for="content">Note:</label><br>
+            <textarea name="content" rows="10" cols="30" id="content"></textarea>
+        </p>
+    </div>
+    <input type="submit" id="submit" value="Add Note">
+</form>
