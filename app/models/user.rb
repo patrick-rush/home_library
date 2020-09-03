@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     has_many :books
+    has_many :notes, through: :books
 
     has_secure_password
     
