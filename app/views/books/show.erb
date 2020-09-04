@@ -19,9 +19,10 @@
 </form>
 
 <div>
+    <br>
     <p>Notes:</p>
     <% @book.notes.each do |note| %>
-        <div>Note From: <%= note.created_at.strftime("%b %d, %Y") %> </div>
+        <div><%= note.created_at.strftime("%b %d, %Y") %> </div>
         <p><%= note.content %></p>
     <% end %>
 </div>
