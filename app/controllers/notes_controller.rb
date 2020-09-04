@@ -26,12 +26,12 @@ class NotesController < ApplicationController
     note = Note.new(content: params[:content], book_id: params[:id])
     # binding.pry
     if note.save
+      # binding.pry
       redirect "/books/#{params[:id]}"
     else
       # Add an error here
       redirect "/books/#{params[:id]}/notes/new"
     end
-
     redirect "/notes"
   end
 

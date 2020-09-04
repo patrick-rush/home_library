@@ -1,8 +1,12 @@
 <h1> <%= @user.first_name %>'s Library</h1>
 
-<% @books.each do |book| %>
+<% @books.sort.each do |book| %>
     <div>
-        <a href="/books/<%= book.id %>"><h3>Title: <%= book.title %></h3><br></a>
-        <h4>Author: <%= book.author %></h4><br>
+        <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
+        <h4>By <%= book.author %></h4>
+        <% unless book.status.nil? || book.status.empty? %>
+            <h4>Status: <%= book.status %></h4>
+        <% end %>
+        <h4>Number of Notes: <%= book.notes.count %></h4>
     </div><br>
 <% end %>

@@ -1,7 +1,7 @@
 <h1><%= @book.title %></h1>
 
 <div>
-    <p>Author: <%= @book.author %></p>
+    <p>By <%= @book.author %></p>
     <% unless @book.status.nil? || @book.status.empty? %>
         <p>Status: <%= @book.status %></p>
     <% end %>
@@ -21,7 +21,7 @@
 <div>
     <p>Notes:</p>
     <% @book.notes.each do |note| %>
-        <div>Note From: <%= note.created_at("%b %d, %Y") %> </div>
+        <div>Note From: <%= note.created_at.strftime("%b %d, %Y") %> </div>
         <p><%= note.content %></p>
     <% end %>
 </div>
