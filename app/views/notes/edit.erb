@@ -1,2 +1,12 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
- <!-- add edit button to notes -->
+<h1>Edit this note:</h1>
+
+<form method="post" action="/notes/<%= @note.id %>">
+    <div>
+        <input type="hidden" name="_method" value="patch">
+        <p>
+            <label for="content">Your Note</label><br>
+            <textarea name="content" rows="10" cols="30" id="content"><%= @note.content %></textarea>
+        </p>
+    </div>
+    <input type="submit" id="submit" value="Update Note">
+</form>

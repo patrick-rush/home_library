@@ -18,20 +18,22 @@
     <input type="submit" id="submit" value="Delete">
 </form><br>
 
-<div class="notes">
-    <br>
-    <p>Notes:</p>
-    <% @book.notes.each do |note| %>
-        <br><div><%= note.created_at.strftime("%b %d, %Y") %> </div>
-        <p><%= note.content %></p>
-        <div>
-            <form method="get" action="/notes/<%= note.id %>/edit">
-                <input type="submit" id="submit" value="Edit Note">
-            </form>
-            <form method="post" action="/notes/<%= note.id %>/delete">
-                <input type="hidden" name="_method" value="delete">
-                <input type="submit" id="submit" value="Delete Note">
-            </form><br>
-        </div><br>
-    <% end %>
-</div>
+<% if @book.notes.length > 0 %>
+    <div class="notes">
+        <br>
+        <h2>Notes:</h2>
+        <% @book.notes.each do |note| %>
+            <br><div><%= note.created_at.strftime("%b %d, %Y") %> </div>
+            <p><%= note.content %></p>
+            <div>
+                <form method="get" action="/notes/<%= note.id %>/edit">
+                    <input type="submit" id="submit" value="Edit Note">
+                </form>
+                <form method="post" action="/notes/<%= note.id %>/delete">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="submit" id="submit" value="Delete Note">
+                </form><br>
+            </div><br>
+        <% end %>
+    </div>
+<% end %>
