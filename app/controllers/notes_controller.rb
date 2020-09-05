@@ -1,15 +1,15 @@
 class NotesController < ApplicationController
 
   # GET: /notes
-  get "/notes" do
-    @user = current_user(session)
-    @books = Book.where(user_id: @user.id)
-    @notes = @books.collect do |book|
-      book.notes
-    end
-    # binding.pry
-    erb :"/notes/index"
-  end
+  # get "/notes" do
+  #   @user = current_user(session)
+  #   @books = Book.where(user_id: @user.id)
+  #   @notes = @books.collect do |book|
+  #     book.notes
+  #   end
+  #   # binding.pry
+  #   erb :"/notes/index"
+  # end
 
   # GET: /notes/new
   get "/books/:id/notes/new" do
@@ -35,12 +35,12 @@ class NotesController < ApplicationController
     redirect "/notes"
   end
 
-  # GET: /notes/5
-  get "/notes/:id" do
-    @note = Note.find(params[:id])
-    @book = Book.find(@note.book_id)
-    erb :"/notes/show"
-  end
+  # # GET: /notes/5
+  # get "/notes/:id" do
+  #   @note = Note.find(params[:id])
+  #   @book = Book.find(@note.book_id)
+  #   erb :"/book/#{@book.id}"
+  # end
   # Fill in notes show
 
   # GET: /notes/5/edit
@@ -59,7 +59,7 @@ class NotesController < ApplicationController
     note = Note.find(params[:id])
     note.content = params[:content]
     note.save
-    redirect "/notes/#{note.id}"
+    redirect "/books/#{note.book_id}"
   end
   # Fill in notes id
 

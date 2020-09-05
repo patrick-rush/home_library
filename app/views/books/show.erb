@@ -21,7 +21,7 @@
 <% if @book.notes.length > 0 %>
     <div class="notes">
         <br>
-        <h2>Notes:</h2>
+        <h2>Notes</h2>
         <% @book.notes.each do |note| %>
             <br><div><%= note.created_at.strftime("%b %d, %Y") %> </div>
             <p><%= note.content %></p>
