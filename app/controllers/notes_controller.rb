@@ -37,21 +37,38 @@ class NotesController < ApplicationController
 
   # GET: /notes/5
   get "/notes/:id" do
+    @note = Note.find(params[:id])
+    @book = Book.find(@note.book_id)
     erb :"/notes/show"
   end
+  # Fill in notes show
 
   # GET: /notes/5/edit
   get "/notes/:id/edit" do
-    erb :"/notes/edit"
+    @note = Note.find(params[:id])
+    if logged_in?(session)
+      erb :"/notes/edit"
+    else
+      redirect "/login"
+    end
   end
+  # Fill in notes edit  
 
   # PATCH: /notes/5
   patch "/notes/:id" do
-    redirect "/notes/:id"
+    note = Note.find(params[:id])
+    note.content = params[:content]
+    note.save
+    redirect "/notes/#{note.id}"
   end
+  # Fill in notes id
 
   # DELETE: /notes/5/delete
   delete "/notes/:id/delete" do
-    redirect "/notes"
+    note = Note.find(params[:id])
+    book_id = note.book_id
+    note.delete
+    redirect "/books/#{book_id}"
   end
+  # Add button somewhere
 end
