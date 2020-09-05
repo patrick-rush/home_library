@@ -15,18 +15,19 @@ class UsersController < ApplicationController
     user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
     # binding.pry
     if user.save
-      # come back and add @errors = user.errors.full_messages ??
       session[:user_id] = user.id
       redirect "/books"
+    else
+      @error = "Something went wrong. Please try again."
+      erb :"/users/new"
     end
-    redirect "/users/new"
   end
 
   get "/login" do
     if logged_in?(session)
       redirect "/books"
     else
-      erb :'/users/login'
+      erb :"/users/login"
     end
   end
 
@@ -37,8 +38,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/books"
     else
-      @error = "Incorrect email or password" # -> figure out where to use this
-      redirect "/login"
+      @error = "Incorrect Email or Password" # -> figure out where to use this
+      erb :"/users/login"
     end
   end
 
