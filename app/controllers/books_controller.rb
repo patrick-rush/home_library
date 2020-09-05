@@ -22,7 +22,8 @@ class BooksController < ApplicationController
     if book.save
       redirect "/books/#{book.id}"
     else
-      redirect "/books/new"
+      @error = "New books must have a title to be saved to your library."
+      erb :"/books/new"
     end
   end
 
