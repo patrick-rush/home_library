@@ -25,7 +25,7 @@
   }
 
   .wrapper {
-    background: #e4d4d4;
+    background: #e4d4d4cc;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -37,7 +37,7 @@
 
   .notes {
     /* margin-top: 100px; */
-    background: #e4d4d4;
+    background: #e4d4d4cc;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -107,14 +107,20 @@
     padding-top: 20px;
   }
 
+  div.date {
+    border-top: 2px solid #ccc;
+    padding-top: 10px;
+  }
+
   #submit {
     background-color: #314e6b;
     border: none;
     color: white;
     padding: 10px 24px;
+    margin: 0 10px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    /* display: inline-block; */
     border-radius: 2px;
     font-size: 16px;
     transition-duration: 0.4s;
