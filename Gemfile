@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash'
+gem "auto_strip_attributes", "~> 2.6"
 
 group :development, :test do
   gem 'dotenv'

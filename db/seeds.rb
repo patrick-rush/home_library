@@ -1,6 +1,7 @@
 User.find_or_create_by(email: "patrick@patrick.com", first_name: "Patrick", last_name: "Rush", password_digest: "8920")
 User.find_or_create_by(email: "test@test.com", first_name: "Testy", last_name: "McTesterson", password_digest: "2049")
 # Front end created user information (email: "michael@michael.com", first_name: "Michael", last_name: "Royce", password_digest: "3089")
+# Front end created user information (email: "ollie@brandtson.com", first_name: "Oliver", last_name: "Rush", password_digest: "5555")
 
 Book.find_or_create_by(title: "Terrible Book", author: "Steven", status: "read", user_id: "1")
 Book.find_or_create_by(title: "Bad Book", author: "Jerry", status: "unread", user_id: "1")

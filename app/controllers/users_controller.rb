@@ -18,8 +18,10 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/books"
     else
-      @error = "Something went wrong. Please try again."
-      erb :"/users/new"
+      flash[:error] = "Something went wrong. Please try again."
+      redirect "/users/new"
+      # @error = "Something went wrong. Please try again."
+      # erb :"/users/new"
     end
   end
 
