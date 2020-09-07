@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   get "/books" do
     redirect_if_not_logged_in
     @user = current_user(session)
-    @books = Book.where(user_id: @user.id)
+    @books = Book.where(user_id: @user.id).order(:title)
     erb :"/books/index"
   end
 
