@@ -12,6 +12,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    @user = current_user(session)
+    @books = Book.where(user_id: @user.id)
     erb :welcome
   end
 

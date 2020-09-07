@@ -1,7 +1,5 @@
 class BooksController < ApplicationController
 
-  # todo /books could be alphabetical? 
-
   get "/books" do
     redirect_if_not_logged_in
     @user = current_user(session)

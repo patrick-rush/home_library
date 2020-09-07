@@ -2,9 +2,15 @@
   <div class="col-md-8 col-md-offset-2">
     <h1>Home Library</h1>
 
-    <div class="content">
-      <p>Welcome! <a href="/login">Log in</a> or <a href="/users/new">create an account</a> to get started!
-    </div>
+    <% if logged_in?(session) %>
+      <div class="content">
+        <p>Welcome to the library of <%= @user.first_name + " " + @user.last_name %>! This library currently contains <%= @books.length %> books.</p>
+      </div>
+    <% else %>
+      <div class="content">
+        <p>Welcome! <a href="/login">Log in</a> or <a href="/users/new">create an account</a> to get started!
+      </div>
+    <% end %>
 
   </div>
 </div>
