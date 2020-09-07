@@ -1,62 +1,55 @@
 class BooksController < ApplicationController
 
-  # GET: /books
   get "/books" do
+    redirect_if_not_logged_in
     @user = current_user(session)
     @books = Book.where(user_id: @user.id)
     erb :"/books/index"
   end
 
-  # GET: /books/new
   get "/books/new" do
-    if logged_in?(session)
-      erb :"/books/new"
-    else
-      redirect "/login"
-    end
+    redirect_if_not_logged_in
+    erb :"/books/new"
   end
 
-  # POST: /books
   post "/books" do
     book = Book.new(title: params[:title], author: params[:author], status: params[:status], user_id: current_user(session).id)
     if book.save
+      flash[:success] = "#{book.title} has been added to your library!"
       redirect "/books/#{book.id}"
     else
-      @error = "New books must have a title to be saved to your library."
-      erb :"/books/new"
+      flash[:error] = "New books must have a title to be saved to your library."
+      redirect "/books/new"
     end
   end
 
-  # GET: /books/5
   get "/books/:id" do
+    redirect_if_not_logged_in
     @book = Book.find(params[:id])
     erb :"/books/show"
   end
 
-  # GET: /books/5/edit
   get "/books/:id/edit" do
+    redirect_if_not_logged_in
     @book = Book.find(params[:id])
-    if logged_in?(session)
-      erb :"/books/edit"
-    else
-      redirect "/login"
-    end
+    erb :"/books/edit"
   end
 
-  # PATCH: /books/5
   patch "/books/:id" do
+    redirect_if_not_logged_in
     book = Book.find(params[:id])
-    # binding.pry
     book.title = params[:title]
     book.author = params[:author]
-    book.status = params[:status]
-    # binding.pry
+    if params[:status] != nil
+      book.status = params[:status]
+    end
     book.save
+    flash[:success] = "#{book.title} has been updated!"
     redirect "/books/#{book.id}"
   end
 
-  # DELETE: /books/5
   delete "/books/:id" do
+    redirect_if_not_logged_in
     book = Book.find(params[:id])
     book.delete
     redirect "/books"

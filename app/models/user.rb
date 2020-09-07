@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
     validates :first_name, presence: true
     # validates :password_digest, presence: true # has_secure_password handles this
     # consider adding email format validation
-    auto_strip_attributes :first_name, squish: true
-    auto_strip_attributes :last_name, squish: true
     auto_strip_attributes :first_name, strip: true
     auto_strip_attributes :last_name, strip: true
 end
