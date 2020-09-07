@@ -19,6 +19,7 @@ class NotesController < ApplicationController
   get "/notes/:id/edit" do
     redirect_if_not_logged_in
     @note = Note.find(params[:id])
+    redirect_if_not_authorized(@note)
     erb :"/notes/edit"
   end
 
@@ -34,6 +35,7 @@ class NotesController < ApplicationController
   delete "/notes/:id/delete" do
     redirect_if_not_logged_in
     note = Note.find(params[:id])
+    redirect_if_not_authorized(note)
     book_id = note.book_id
     note.delete
     redirect "/books/#{book_id}"

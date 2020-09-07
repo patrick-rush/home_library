@@ -26,12 +26,14 @@ class BooksController < ApplicationController
   get "/books/:id" do
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
+    redirect_if_not_authorized(@book)
     erb :"/books/show"
   end
 
   get "/books/:id/edit" do
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
+    redirect_if_not_authorized(@book)
     erb :"/books/edit"
   end
 
@@ -51,6 +53,7 @@ class BooksController < ApplicationController
   delete "/books/:id" do
     redirect_if_not_logged_in
     book = Book.find(params[:id])
+    redirect_if_not_authorized(book)
     book.delete
     redirect "/books"
   end
