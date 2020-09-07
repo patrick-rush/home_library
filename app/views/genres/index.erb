@@ -1,1 +1,12 @@
-<h1>This is the Model's index page.</h1>
+<h1>Books by Genre in <%= @user.first_name %>'s Library</h1>
+
+<% if @books.length == 0 %>
+    <h4>Your library is empty! Click "New Book" to start adding to your library.</h4>
+<% else %>
+    <% @genres.each do |genre| %>
+        <div>
+            <a href="/genres/<%= genre.id %>"><h3><%= genre.name %></h3></a>
+            <h4>Number of Books: <%= Book.where(genre_id: genre.id).count %></h4>
+        </div><br>
+    <% end %>
+<% end %>

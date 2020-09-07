@@ -2,12 +2,16 @@ class GenresController < ApplicationController
 
   # GET: /genres
   get "/genres" do
-    erb :"/genres/index.html"
+    redirect_if_not_logged_in
+    @user = current_user(session)
+    @books = Book.where(user_id: @user.id)
+    @genres = Genre.all
+    erb :"/genres/index"
   end
 
   # GET: /genres/new
   get "/genres/new" do
-    erb :"/genres/new.html"
+    erb :"/genres/new"
   end
 
   # POST: /genres
@@ -17,12 +21,12 @@ class GenresController < ApplicationController
 
   # GET: /genres/5
   get "/genres/:id" do
-    erb :"/genres/show.html"
+    erb :"/genres/show"
   end
 
   # GET: /genres/5/edit
   get "/genres/:id/edit" do
-    erb :"/genres/edit.html"
+    erb :"/genres/edit"
   end
 
   # PATCH: /genres/5

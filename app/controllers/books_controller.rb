@@ -9,11 +9,12 @@ class BooksController < ApplicationController
 
   get "/books/new" do
     redirect_if_not_logged_in
+    @genres = Genre.all
     erb :"/books/new"
   end
 
   post "/books" do
-    book = Book.new(title: params[:title], author: params[:author], status: params[:status], user_id: current_user(session).id)
+    book = Book.new(title: params[:title], author: params[:author], status: params[:status], genre: params[:genre], user_id: current_user(session).id)
     if book.save
       flash[:success] = "#{book.title} has been added to your library!"
       redirect "/books/#{book.id}"

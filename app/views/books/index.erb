@@ -3,7 +3,6 @@
 <% if @books.length == 0 %>
     <h4>Your library is empty! Click "New Book" to start adding to your library.</h4>
 <% else %>
-<!-- figure out how to alphebatize the books in the library -->
     <% @books.each do |book| %>
         <div>
             <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
