@@ -9,7 +9,7 @@ class BooksController < ApplicationController
 
   get "/books/new" do
     redirect_if_not_logged_in
-    @genres = Genre.all
+    @genres = Genre.all.order(:name)
     erb :"/books/new"
   end
 
@@ -38,7 +38,7 @@ class BooksController < ApplicationController
   get "/books/:id/edit" do
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
-    @genres = Genre.all
+    @genres = Genre.all.order(:name)
     redirect_if_not_authorized(@book)
     erb :"/books/edit"
   end
@@ -64,6 +64,7 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     redirect_if_not_authorized(book)
     book.delete
+    flash[:success] = "#{book.title} has been deleted from your library."
     redirect "/books"
   end
 end
