@@ -23,6 +23,17 @@
             <input type="radio" name="status" value="">
             <label for="other">Other</label>
         </p>
+        <p>
+            <label for="genre_id">Genre:</label>
+            <select id="genre_id">
+                <option value="">Select</option>
+                <% @genres.each do |genre| %>
+                    <option value="<%= genre.name %>"><%= genre.name %></option>
+                <% end %>
+            </select>
+        </p>
+    </div>
+
     </div>
     <input type="submit" id="submit" value="Update Book">
 </form>

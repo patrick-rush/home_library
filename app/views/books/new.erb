@@ -22,10 +22,11 @@
             <label for="other">Other</label>
         </p>
         <p>
-            <label for="genre">Genre:</label>
-            <select id="genre">
+            <label for="genre_id">Genre:</label>
+            <select id="genre_id" name="genre_id">
+                <option value="">Select</option>
                 <% @genres.each do |genre| %>
-                    <option value="<%= genre.name %>"><%= genre.name %></option>
+                    <option value="<%= genre.id %>"><%= genre.name %></option>
                 <% end %>
             </select>
         </p>
