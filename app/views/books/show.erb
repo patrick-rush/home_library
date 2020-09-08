@@ -5,6 +5,10 @@
     <% unless @book.status.nil? || @book.status.empty? %>
         <p>Status: <%= @book.status %></p>
     <% end %>
+    <% unless @book.genre_id.nil? %>
+        <p>Genre: <%= @genre.name %></p>
+    <% end %>
+
 </div>
 
 <form method="get" action="/books/<%= @book.id %>/notes/new">

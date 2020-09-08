@@ -1,4 +1,4 @@
-<h1>Edit a book in your library!</h1>
+<h1>Edit <%= @book.title %></h1>
 
 <form method="post" action="/books/<%= @book.id %>">
     <div>
@@ -11,7 +11,6 @@
             <label for="author">Author:</label><br>
             <input name="author" id="author" value="<%= @book.author %>">
         </p>
-        <!-- Figure out how to preselect radio button -->
         <p>
             <label for="status">Status:</label><br>
             <input type="radio" name="status" value="Unread">
@@ -23,6 +22,17 @@
             <input type="radio" name="status" value="">
             <label for="other">Other</label>
         </p>
+        <p>
+            <label for="genre_id">Genre:</label>
+            <select id="genre_id" name="genre_id">
+                <option value="">Select</option>
+                <% @genres.each do |genre| %>
+                    <option value="<%= genre.id %>"><%= genre.name %></option>
+                <% end %>
+            </select>
+        </p>
+    </div>
+
     </div>
     <input type="submit" id="submit" value="Update Book">
 </form>

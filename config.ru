@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
+use GenresController
 use NotesController
 use BooksController
 use UsersController

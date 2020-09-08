@@ -1,7 +1,5 @@
 <h1>Add a book to your library</h1>
 
-<%= @error %>
-
 <form method="post" action="/books">
     <div>
         <p>
@@ -22,6 +20,15 @@
             <label for="read">Read</label>
             <input type="radio" name="status" value="">
             <label for="other">Other</label>
+        </p>
+        <p>
+            <label for="genre_id">Genre:</label>
+            <select id="genre_id" name="genre_id">
+                <option value="">Select</option>
+                <% @genres.each do |genre| %>
+                    <option value="<%= genre.id %>"><%= genre.name %></option>
+                <% end %>
+            </select>
         </p>
     </div>
     <input type="submit" id="submit" value="Add Book">
