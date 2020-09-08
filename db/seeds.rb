@@ -20,8 +20,3 @@ Genre.find_or_create_by(name: "Self-Help")
 Genre.find_or_create_by(name: "True Crime")
 Genre.find_or_create_by(name: "Science")
 Genre.find_or_create_by(name: "Undefined")
-
-
-# Front end created user information (email: "michael@michael.com", first_name: "Michael", last_name: "Royce", password_digest: "3089")
-# Front end created user information (email: "ollie@brandtson.com", first_name: "Oliver", last_name: "Rush", password_digest: "5555")
-# Front end created user information (email: "patrick@rush.com", first_name: "Patrick", last_name: "Rush", password_digest: "7874")
