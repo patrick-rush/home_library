@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   get "/books/:id" do
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
-    @genre = Genre.find(@book.genre_id)
+    @genre = Genre.find_by_id(@book.genre_id) 
     redirect_if_not_authorized(@book)
     erb :"/books/show"
   end
@@ -51,7 +51,7 @@ class BooksController < ApplicationController
     if params[:status] != nil
       book.status = params[:status]
     end
-    unless params[:genre_id].empty?
+    if params[:genre_id] != nil
       book.genre = Genre.find(params[:genre_id])
     end
     book.save

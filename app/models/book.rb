@@ -4,4 +4,7 @@ class Book < ActiveRecord::Base
     has_many :notes
     
     validates :title, presence: true
+
+    auto_strip_attributes :title, strip: true
+    auto_strip_attributes :author, strip: true
 end

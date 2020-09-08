@@ -9,33 +9,36 @@ class GenresController < ApplicationController
     erb :"/genres/index"
   end
 
-  # GET: /genres/new
-  get "/genres/new" do
-    erb :"/genres/new"
-  end
+  # # GET: /genres/new
+  # get "/genres/new" do
+  #   erb :"/genres/new"
+  # end
 
-  # POST: /genres
-  post "/genres" do
-    redirect "/genres"
-  end
+  # # POST: /genres
+  # post "/genres" do
+  #   redirect "/genres"
+  # end
 
   # GET: /genres/5
   get "/genres/:id" do
+    redirect_if_not_logged_in
+    @genre = Genre.find(params[:id])
+    @books = Book.where(genre_id: @genre.id).order(:title)
     erb :"/genres/show"
   end
 
-  # GET: /genres/5/edit
-  get "/genres/:id/edit" do
-    erb :"/genres/edit"
-  end
+  # # GET: /genres/5/edit
+  # get "/genres/:id/edit" do
+  #   erb :"/genres/edit"
+  # end
 
-  # PATCH: /genres/5
-  patch "/genres/:id" do
-    redirect "/genres/:id"
-  end
+  # # PATCH: /genres/5
+  # patch "/genres/:id" do
+  #   redirect "/genres/:id"
+  # end
 
-  # DELETE: /genres/5/delete
-  delete "/genres/:id/delete" do
-    redirect "/genres"
-  end
+  # # DELETE: /genres/5/delete
+  # delete "/genres/:id/delete" do
+  #   redirect "/genres"
+  # end
 end
