@@ -4,13 +4,13 @@
     <h4>Your library is empty! Click "New Book" to start adding to your library.</h4>
 <% else %>
     <% @books.each do |book| %>
-        <div>
+        <div class="column">
             <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
             <h4>By <%= book.author %></h4>
             <% unless book.status.nil? || book.status.empty? %>
                 <h4>Status: <%= book.status %></h4>
             <% end %>
             <h4>Number of Notes: <%= book.notes.count %></h4>
-        </div><br>
+        </div>
     <% end %>
 <% end %>
