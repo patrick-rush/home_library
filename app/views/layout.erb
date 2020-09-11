@@ -19,14 +19,18 @@
 
       <nav class="navigation">
         <% if logged_in?(session) %>
-          <a href="/">Home</a>
-          <a href="/books">Library</a>
-          <a href="/genres">Genres</a>
-          <a href="/books/new">New Book</a>
-          <a href="/logout">Log Out</a>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/books">Library</a></li>
+            <li><a href="/genres">Genres</a></li>
+            <li><a href="/books/new">New Book</a></li>
+            <li style="float:right"><a href="/logout" >Log Out</a></li>
+          </ul>
         <% else %>
-          <a href="/login">Log In</a>
-          <a href="/users/new">Create an Account</a>
+          <ul>
+            <li style="float:right"><a href="/login">Log In</a></li>
+            <li style="float:right"><a href="/users/new">Create an Account</a></li>
+          </ul>
         <% end %>
       </nav>
         <h3>

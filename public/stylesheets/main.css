@@ -86,10 +86,38 @@ display flex <- try
   a {
     color: #5c8ba8;
     transition-duration: 0.4s;
+    display: block;
+    padding: 8px;
   }
 
   a:hover {
     color: #011638
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #e4e4e4cc;
+  }
+
+  li {
+    display: inline;
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: #5c8ba8;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #5c8ba8;
+    color: #ebebeb;
   }
 
   textarea {
