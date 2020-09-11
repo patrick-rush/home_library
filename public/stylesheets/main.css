@@ -173,6 +173,10 @@ display flex <- try
     float: right
   }
 
+  small a {
+    display: inline;
+  }
+
   .push {
     height: 40px;
   }
