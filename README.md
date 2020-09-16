@@ -1,6 +1,6 @@
 # Home Library
 
-Library Logbook is a web application for keeping track of what books you own, which ones you've read, and for taking notes on them.
+Home Library is a web application for keeping track of what books you own, which ones you've read, and for taking notes on them.
 
 You can visit the public version of this app... (coming soon)
 
