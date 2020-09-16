@@ -15,6 +15,7 @@ and
 ```bash
 $ rake db:seed
 ```
+You're seeding the database with categories or genres. If you wish to create your own list of genres feel free to skip this.
 
 You will need to set up a SESSION_SECRET. You can do this by opening IRB and running...
 
