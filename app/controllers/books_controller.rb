@@ -51,7 +51,7 @@ class BooksController < ApplicationController
     if params[:status] != nil
       book.status = params[:status]
     end
-    if params[:genre_id] != nil
+    unless params[:genre_id].empty?
       book.genre = Genre.find(params[:genre_id])
     end
     book.save
