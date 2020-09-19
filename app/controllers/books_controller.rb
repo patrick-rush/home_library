@@ -1,19 +1,22 @@
 class BooksController < ApplicationController
 
-  get "/books" do
+  # index
+  get "/books" do 
     redirect_if_not_logged_in
     @user = current_user(session)
     @books = Book.where(user_id: @user.id).order(:title)
     erb :"/books/index"
   end
 
+  #new
   get "/books/new" do
     redirect_if_not_logged_in
     @genres = Genre.all.order(:name)
     erb :"/books/new"
   end
 
-  post "/books" do
+  #create
+  post "/books" do 
     book = Book.new(title: params[:title], author: params[:author], status: params[:status], user_id: current_user(session).id)
     unless params[:genre_id].empty?
       book.genre_id = params[:genre_id]
@@ -27,7 +30,8 @@ class BooksController < ApplicationController
     end
   end
 
-  get "/books/:id" do
+  #show
+  get "/books/:id" do 
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
     @genre = Genre.find_by_id(@book.genre_id) 
@@ -35,7 +39,8 @@ class BooksController < ApplicationController
     erb :"/books/show"
   end
 
-  get "/books/:id/edit" do
+  #edit
+  get "/books/:id/edit" do 
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
     @genres = Genre.all.order(:name)
@@ -43,7 +48,8 @@ class BooksController < ApplicationController
     erb :"/books/edit"
   end
 
-  patch "/books/:id" do
+  #update
+  patch "/books/:id" do 
     redirect_if_not_logged_in
     book = Book.find(params[:id])
     book.title = params[:title]
@@ -59,6 +65,7 @@ class BooksController < ApplicationController
     redirect "/books/#{book.id}"
   end
 
+  #destroy
   delete "/books/:id" do
     redirect_if_not_logged_in
     book = Book.find(params[:id])

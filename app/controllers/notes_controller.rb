@@ -1,11 +1,15 @@
 class NotesController < ApplicationController
 
+  # index and show not needed - the user can only see notes in the context of its book and can't see individual notes
+
+  # new - uses /books/:id so info about book can be passed along in the route
   get "/books/:id/notes/new" do
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
     erb :"/notes/new"
   end
 
+  # create
   post "/notes" do
     note = Note.new(content: params[:content], book_id: params[:id])
     if note.save
@@ -16,6 +20,7 @@ class NotesController < ApplicationController
     end
   end
 
+  # edit
   get "/notes/:id/edit" do
     redirect_if_not_logged_in
     @note = Note.find(params[:id])
@@ -23,6 +28,7 @@ class NotesController < ApplicationController
     erb :"/notes/edit"
   end
 
+  # update
   patch "/notes/:id" do
     redirect_if_not_logged_in
     note = Note.find(params[:id])
@@ -32,6 +38,7 @@ class NotesController < ApplicationController
     redirect "/books/#{note.book_id}"
   end
 
+  # destroy
   delete "/notes/:id/delete" do
     redirect_if_not_logged_in
     note = Note.find(params[:id])

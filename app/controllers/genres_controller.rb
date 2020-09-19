@@ -1,5 +1,8 @@
 class GenresController < ApplicationController
 
+  # genres are preloaded so no need for new, create, edit, update, or destroy
+
+  # index
   get "/genres" do
     redirect_if_not_logged_in
     @user = current_user(session)
@@ -8,6 +11,7 @@ class GenresController < ApplicationController
     erb :"/genres/index"
   end
 
+  # show
   get "/genres/:id" do
     redirect_if_not_logged_in
     @genre = Genre.find(params[:id])
