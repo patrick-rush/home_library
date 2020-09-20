@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  helpers do
+  private
 
     # is the user logged in true/false
     def logged_in?(session)
@@ -52,6 +52,5 @@ class ApplicationController < Sinatra::Base
         redirect "/books"
       end
     end
-  end
 
 end

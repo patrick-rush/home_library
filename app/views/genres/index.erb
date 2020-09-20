@@ -7,7 +7,7 @@
     <% @genres.each do |genre| %>
         <div class="column">
             <a href="/genres/<%= genre.id %>"><h3><%= genre.name %></h3></a>
-            <h4>Number of Books: <%= Book.where(genre_id: genre.id).count %></h4>
+            <h4>Number of Books: <%= @books.where(genre_id: genre.id).count %></h4>
         </div>
     <% end %>
 <% end %>
