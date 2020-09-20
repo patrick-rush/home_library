@@ -4,7 +4,8 @@ class BooksController < ApplicationController
   get "/books" do 
     redirect_if_not_logged_in
     @user = current_user(session)
-    @books = Book.where(user_id: @user.id).order(:title)
+    # @books = Book.where(user_id: @user.id).order(:title)
+    @books = @user.books.order(:title)
     erb :"/books/index"
   end
 
@@ -34,7 +35,8 @@ class BooksController < ApplicationController
   get "/books/:id" do 
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
-    @genre = Genre.find_by_id(@book.genre_id) 
+    # @genre = Genre.find_by_id(@book.genre_id) 
+    @genre = @book.genre # Can do this or just call @book.genre.name in ERB file
     redirect_if_not_authorized(@book)
     erb :"/books/show"
   end
