@@ -18,6 +18,7 @@ class BooksController < ApplicationController
 
   #create
   post "/books" do 
+    redirect_if_not_logged_in
     book = Book.new(title: params[:title], author: params[:author], status: params[:status], user_id: current_user(session).id)
     unless params[:genre_id].empty?
       book.genre_id = params[:genre_id]
@@ -54,6 +55,7 @@ class BooksController < ApplicationController
   patch "/books/:id" do 
     redirect_if_not_logged_in
     book = Book.find(params[:id])
+    redirect_if_not_authorized(book)
     book.title = params[:title]
     book.author = params[:author]
     if params[:status] != nil

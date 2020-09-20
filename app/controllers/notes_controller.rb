@@ -11,6 +11,7 @@ class NotesController < ApplicationController
 
   # create
   post "/notes" do
+    redirect_if_not_logged_in
     note = Note.new(content: params[:content], book_id: params[:id])
     if note.save
       redirect "/books/#{params[:id]}"
@@ -32,6 +33,7 @@ class NotesController < ApplicationController
   patch "/notes/:id" do
     redirect_if_not_logged_in
     note = Note.find(params[:id])
+    redirect_if_not_authorized(note)
     note.content = params[:content]
     note.save
     flash[:success] = "Your note has been updated."
