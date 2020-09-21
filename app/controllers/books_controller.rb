@@ -32,6 +32,34 @@ class BooksController < ApplicationController
     end
   end
 
+  get "/books/status" do
+    redirect_if_not_logged_in
+    @user = current_user(session)
+    @books = @user.books
+    erb :"/books/status"
+  end
+
+  get "/books/read" do
+    redirect_if_not_logged_in
+    @user = current_user(session)
+    @books = @user.books.where(status: "Read")
+    erb :"/books/index"
+  end
+
+  get "/books/unread" do
+    redirect_if_not_logged_in
+    @user = current_user(session)
+    @books = @user.books.where(status: "Unread")
+    erb :"/books/index"
+  end
+
+  get "/books/reading" do
+    redirect_if_not_logged_in
+    @user = current_user(session)
+    @books = @user.books.where(status: "Reading")
+    erb :"/books/index"
+  end
+
   # show
   get "/books/:id" do 
     redirect_if_not_logged_in
@@ -78,4 +106,5 @@ class BooksController < ApplicationController
     flash[:success] = "#{book.title} has been deleted from your library."
     redirect "/books"
   end
+
 end

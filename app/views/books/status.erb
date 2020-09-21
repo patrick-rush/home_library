@@ -1,0 +1,20 @@
+<h1>Books by Status</h1>
+
+<% if @books.length == 0 %>
+    <h4>Your library is empty! Click "New Book" to start adding to your library.</h4>
+
+<% else %>
+
+    <div class="column">
+        <a href="/books/read"><h3>Read</h3></a>
+        <h4>Number of Books: <%= @books.where(status: "Read").count %></h4>
+    </div>
+    <div class="column">
+        <a href="/books/unread"><h3>Unread</h3></a>
+        <h4>Number of Books: <%= @books.where(status: "Unread").count %></h4>
+    </div>
+    <div class="column">
+        <a href="/books/reading"><h3>Reading</h3></a>
+        <h4>Number of Books: <%= @books.where(status: "Reading").count %></h4>
+    </div>
+<% end %>
