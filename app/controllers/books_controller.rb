@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     erb :"/books/new"
   end
 
-  #create
+  # create
   post "/books" do 
     redirect_if_not_logged_in
     book = Book.new(title: params[:title], author: params[:author], status: params[:status], user_id: current_user(session).id)
@@ -32,7 +32,7 @@ class BooksController < ApplicationController
     end
   end
 
-  #show
+  # show
   get "/books/:id" do 
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
@@ -42,7 +42,7 @@ class BooksController < ApplicationController
     erb :"/books/show"
   end
 
-  #edit
+  # edit
   get "/books/:id/edit" do 
     redirect_if_not_logged_in
     @book = Book.find(params[:id])
@@ -51,7 +51,7 @@ class BooksController < ApplicationController
     erb :"/books/edit"
   end
 
-  #update
+  # update
   patch "/books/:id" do 
     redirect_if_not_logged_in
     book = Book.find(params[:id])
@@ -69,7 +69,7 @@ class BooksController < ApplicationController
     redirect "/books/#{book.id}"
   end
 
-  #destroy
+  # destroy
   delete "/books/:id" do
     redirect_if_not_logged_in
     book = Book.find(params[:id])
